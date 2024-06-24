@@ -23,25 +23,38 @@ function App() {
 
 
   return (
-    <>
-      <h1 className='px-10 '>01-Stopwatch</h1>
-      <div>
+    <div className='py-8 flex flex-col items-center justify-center'>
+      <h1 className='text-2xl font-semibold py-4'>01-Stopwatch</h1>
+      <div className='text-xl font-semibold'>
         <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
         <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
         <span>{("0" + Math.floor((time / 10) % 100)).slice(-2)}</span>
       </div>
-      <div>
-        {running ? (<button onClick={() => { setRunning(false) }}>Stop</button>): (<button onClick={() => {
-          setRunning(true)
-        }}>Start</button>)}
+      <div className='w-1/3 flex flex-row justify-between'>
+        {running ? (
+          <button className='border rounded-lg px-2 py-2.5' 
+          onClick={() => { setRunning(false) }}
+          >
+            Stop
+          </button>
+        ): (
+          <button 
+          className='border rounded-lg px-2 py-2.5'
+          onClick={() => {
+          setRunning(true)}}
+          >
+            Start
+          </button>
+        )
+        }
         
         
-        <button onClick={() => {
+        <button className='border rounded-lg px-2 py-2.5 bg-zinc-600 text-white' onClick={() => {
           setRunning(false);
           setTime(0);
         }}>Reset</button>
       </div>
-    </>
+    </div>
   );
 }
 
